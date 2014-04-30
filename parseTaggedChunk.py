@@ -11,6 +11,7 @@ for line in sys.stdin:
         expression = "<" + key + r">([^<]+)</" + key + ">"
         phrases = re.findall(expression,line)
         if len(phrases) > 0:
-            entry[key] = phrases
+            #coerce to a set to remove duplicate entries
+            entry[key] = list(set(phrases))
     if len(entry) > 1:
         print json.dumps(entry)
