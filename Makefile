@@ -9,7 +9,7 @@ metadata.txt:
 	cat ../../files/texts/input.txt | parallel  --block-size 1M --pipe ./tagAChunk.sh > metadata.txt
 
 clean:
-	rm bookwormMetadata
+	-rm bookwormMetadata
 
 bookwormMetadata: metadata.txt
 	cd ../..; python OneClick.py supplementMetadataFromJSON extensions/geotagger/metadata.txt filename
